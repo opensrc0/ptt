@@ -125,6 +125,24 @@
 								</div>
 							</div>
 						</div>
+						<div class="date-filter-wrapper flex">
+							<div class="planning-date-wrapper">
+								<h4>planning date</h4>
+								<select class="planning-date-selection">
+									<option>Month</option>
+									<option>Month 1</option>
+									<option>Month 2</option>
+								</select>
+							</div>
+							<div class="revision-name-wrapper">
+								<h4>revision name</h4>
+								<select class="revision-name-selection">
+									<option>OCT A</option>
+									<option>OCT B</option>
+									<option>OCT C</option>
+								</select>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

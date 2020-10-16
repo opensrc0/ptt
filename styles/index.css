@@ -163,6 +163,26 @@ section {
   width: 33%;
   padding-top: 27px;
 }
+.date-filter-wrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+.date-filter-wrapper .planning-date-wrapper,
+.date-filter-wrapper .revision-name-wrapper{
+  width: 50%;
+}
+.date-filter-wrapper select{
+  width: 80%;
+  padding: 7px;
+  height: 37px;
+  border-radius: 4px;
+  outline: none;
+  letter-spacing: -0.3px;
+  color: #14AFDC;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid #14AFDC;
+}
 .ptt-logo {
   display: inline-block;
 }
@@ -262,9 +282,34 @@ section {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
+.form-checkbox input[type="radio"] + .checkbox-custom-label:before {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+}
 .form-checkbox .checkbox-custom:checked + .checkbox-custom-label:before {
   background-color: transparent;
   border: 3px solid #14AFDC;
+}
+.form-checkbox input[type="radio"] + label:after {
+  opacity: 1;
+  border: none;
+  background-color: #46b0dc;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(0deg) scale(0);
+  transform: rotate(0deg) scale(0);
+  border-radius: 50px;
+  left: 7.5px;
+  top: 7.5px;
+}
+.form-checkbox input[type="radio"] span {
+  min-width: 58px;
+}
+.form-checkbox input[type="radio"]:checked + label:after {
+  border: none;
+  -webkit-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
 }
 .form-checkbox .checkbox-custom:checked + label:after {
   opacity: 1;
