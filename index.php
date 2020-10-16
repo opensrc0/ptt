@@ -100,25 +100,25 @@
 							<h4>select month view</h4>
 							<div class="filter-list flex">
 								<div class="form-checkbox">
-									<input id="month-1" class="checkbox-custom" type="checkbox" name="scenario" value="month" checked="" />
+									<input id="month-1" class="checkbox-custom" type="radio" name="scenario" value="month" checked="" />
 									<label for="month-1" class="checkbox-custom-label">
 										<span>Month</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m1" class="checkbox-custom" type="checkbox" name="scenario" value="M+1" checked="" />
+									<input id="m1" class="checkbox-custom" type="radio" name="scenario" value="M+1" />
 									<label for="m1" class="checkbox-custom-label">
 										<span>M+1</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m2" class="checkbox-custom" type="checkbox" name="scenario" value="M+2" checked="" />
+									<input id="m2" class="checkbox-custom" type="radio" name="scenario" value="M+2" />
 									<label for="m2" class="checkbox-custom-label">
 										<span>M+2</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m3" class="checkbox-custom" type="checkbox" name="scenario" value="M+3" checked="" />
+									<input id="m3" class="checkbox-custom" type="radio" name="scenario" value="M+3" />
 									<label for="m3" class="checkbox-custom-label">
 										<span>M+3</span>
 									</label>

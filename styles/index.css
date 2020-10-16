@@ -266,15 +266,15 @@ section {
   background-color: transparent;
   border: 3px solid #14AFDC;
 }
-.form-checkbox input[type='checkbox']:checked + label:after {
+.form-checkbox .checkbox-custom:checked + label:after {
   opacity: 1;
   border-right: 3px solid #14AFDC;
   border-bottom: 3px solid #14AFDC;
 }
-.form-checkbox input[type='checkbox']:checked + label span {
+.form-checkbox .checkbox-custom:checked + label span {
   color: #14AFDC;
 }
-.form-checkbox input[type='checkbox'] + label:after {
+.form-checkbox .checkbox-custom + label:after {
  top: 5px;
  left: 9px;
  width: 6px;
