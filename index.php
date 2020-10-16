@@ -140,7 +140,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="date-filter-wrapper flex">
+						<!-- <div class="date-filter-wrapper flex">
 							<div class="planning-date-wrapper">
 								<h4>planning date</h4>
 								<select class="planning-date-selection">
@@ -157,7 +157,7 @@
 									<option>OCT C</option>
 								</select>
 							</div>
-						</div>
+						</div> -->
 					</form>
 				</div>
 			</div>
