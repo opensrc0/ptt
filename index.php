@@ -1,3 +1,49 @@
+<?php
+	include "config/config.php";
+	$basesql  = $sql  = 'SELECT * FROM op_direct_master_base
+	ORDER BY planning_date DESC
+	LIMIT 1';
+	$basequery = mysqli_query($conn,$basesql); 
+	$base_num_rows = mysqli_num_rows($basequery);
+	if($base_num_rows>0){
+		$base_data = mysqli_fetch_assoc($basequery);
+	}else{
+		$base_data  = [];
+	}
+	$senario1sql  = $sql  = 'SELECT * FROM op_direct_master_senario_1
+	ORDER BY planning_date DESC
+	LIMIT 1';
+	$senario1query = mysqli_query($conn,$senario1sql); 
+	$senario1_num_rows = mysqli_num_rows($senario1query);
+	if($senario1_num_rows>0){
+		$senario1_data = mysqli_fetch_assoc($senario1query);
+	}else{
+		$senario1_data  = [];
+	}
+
+
+	$senario2sql  = $sql  = 'SELECT * FROM op_direct_master_senario_2
+	ORDER BY planning_date DESC
+	LIMIT 1';
+	$senario2query = mysqli_query($conn,$senario2sql); 
+	$senario2_num_rows = mysqli_num_rows($senario2query);
+	if($senario2_num_rows>0){
+		$senario2_data = mysqli_fetch_assoc($senario2query);
+	}else{
+		$senario2_data  = [];
+	}
+
+	$senario3sql  = $sql  = 'SELECT * FROM op_direct_master_senario_3
+	ORDER BY planning_date DESC
+	LIMIT 1';
+	$senario3query = mysqli_query($conn,$senario3sql); 
+	$senario3_num_rows = mysqli_num_rows($senario3query);
+	if($senario3_num_rows>0){
+		$senario3_data = mysqli_fetch_assoc($senario3query);
+	}else{
+		$senario3_data  = [];
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,25 +71,25 @@
 							<h4>choose a Nomination Scenario</h4>
 							<div class="filter-list flex">
 								<div class="form-checkbox">
-									<input id="base-scenario" class="checkbox-custom" type="checkbox" name="scenario" value="Base Scenario" checked="" />
+									<input id="base-scenario" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="base_scenario" checked="" />
 									<label for="base-scenario" class="checkbox-custom-label">
 										<span>Base Scenario</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-1" class="checkbox-custom" type="checkbox" name="scenario" value="Scenario 1">
+									<input id="scenario-1" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_1">
 									<label for="scenario-1" class="checkbox-custom-label">
 										<span>Scenario 01</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-2" class="checkbox-custom" type="checkbox" name="scenario" value="Scenario 2">
+									<input id="scenario-2" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_2">
 									<label for="scenario-2" class="checkbox-custom-label">
 										<span>Scenario 02</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-3" class="checkbox-custom" type="checkbox" name="scenario" value="Scenario 3">
+									<input id="scenario-3" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_3">
 									<label for="scenario-3" class="checkbox-custom-label">
 										<span>Scenario 03</span>
 									</label>
@@ -99,9 +145,9 @@
 							</div>
 							<div class="scenario-chart-info-wrapper">
 								<div class="scenario-info-title">Total</div>
-								<div class="scenario-value" id="base-scenario-value"><span>4248 MMCFD</span></div>
+								<div class="scenario-value" id="base-scenario-value"><span><?= (!empty($base_data))?$base_data['vn_total']:""; ?> MMCFD</span></div>
 								<div class="scenario-info-title">Other Feedstock</div>
-								<div class="scenario-value" id="other-feedstock-value"><span>#B5B5B5</span></div>
+								<div class="scenario-value" id="other-feedstock-value"><span>#<?= (!empty($base_data))?$base_data['vn_other_feedback']:""; ?></span></div>
 							</div>
 						</div>	
 						<div class="scenario-chart-box" id="scenario-1-chart">
@@ -118,9 +164,9 @@
 							</div>
 							<div class="scenario-chart-info-wrapper">
 								<div class="scenario-info-title">Total</div>
-								<div class="scenario-value" id="scenario-1-value"><span>4248 MMCFD</span></div>
+								<div class="scenario-value" id="scenario-1-value"><span><?= (!empty($senario1_data))?$senario1_data['vn_total']:""; ?> MMCFD</span></div>
 								<div class="scenario-info-title">Other Feedstock</div>
-								<div class="scenario-value" id="other-feedstock-value"><span>#B5B5B5</span></div>
+								<div class="scenario-value" id="other-feedstock-value"><span>#<?= (!empty($senario1_data))?$senario1_data['vn_other_feedback']:""; ?></span></div>
 							</div>
 						</div>	
 						<div class="scenario-chart-box" id="scenario-2-chart">
@@ -136,9 +182,9 @@
 							</div>
 							<div class="scenario-chart-info-wrapper">
 								<div class="scenario-info-title">Total</div>
-								<div class="scenario-value" id="scenario-1-value"><span>4248 MMCFD</span></div>
+								<div class="scenario-value" id="scenario-1-value"><span><?= (!empty($senario2_data))?$senario2_data['vn_total']:""; ?> MMCFD</span></div>
 								<div class="scenario-info-title">Other Feedstock</div>
-								<div class="scenario-value" id="other-feedstock-value"><span>#B5B5B5</span></div>
+								<div class="scenario-value" id="other-feedstock-value"><span>#<?= (!empty($senario2_data))?$senario2_data['vn_other_feedback']:""; ?></span></div>
 							</div>
 						</div>	
 						<div class="scenario-chart-box" id="scenario-3-chart">
@@ -154,9 +200,9 @@
 							</div>
 							<div class="scenario-chart-info-wrapper">
 								<div class="scenario-info-title">Total</div>
-								<div class="scenario-value" id="scenario-3-value"><span>4248 MMCFD</span></div>
+								<div class="scenario-value" id="scenario-3-value"><span><?= (!empty($senario3_data))?$senario3_data['vn_total']:""; ?> MMCFD</span></div>
 								<div class="scenario-info-title">Other Feedstock</div>
-								<div class="scenario-value" id="other-feedstock-value"><span>#B5B5B5</span></div>
+								<div class="scenario-value" id="other-feedstock-value"><span>#<?= (!empty($senario3_data))?$senario3_data['vn_other_feedback']:""; ?></span></div>
 							</div>
 						</div>	
 					</div>
@@ -380,17 +426,17 @@
 									<tbody>
 										<tr>
 											<th>PTT Group</th>
-											<td>102</td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_total_ptt']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>Thailand</th>
-											<td>262</td>
-											<td data-value="0"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_total_thailand']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 									</tbody>
 								</table>
@@ -426,66 +472,66 @@
 									<tbody>
 										<tr>
 											<th>PTTEP</th>
-											<td>26</td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_pttep']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_pttep']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_pttep']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_pttep']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>GSM</th>
-											<td>22.6</td>
-											<td data-value="-8.7"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_gsm']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_gsm']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_gsm']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_gsm']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>GSP</th>
-											<td>4.1</td>
-											<td data-value="5"><span class="valueflow-value"></span></td>
-											<td data-value="5"><span class="valueflow-value"></span></td>
-											<td data-value="5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_gsp']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_gsp']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_gsp']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_gsp']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>GTM</th>
-											<td>70.4</td>
-											<td data-value="2.1"><span class="valueflow-value"></span></td>
-											<td data-value="2.1"><span class="valueflow-value"></span></td>
-											<td data-value="2.1"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_gtm']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_gtm']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_gtm']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_gtm']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>PTTGC</th>
-											<td>2.1</td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_pttgc']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_pttgc']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_pttgc']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_pttgc']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>PTTOR</th>
-											<td>0.7</td>
-											<td data-value="0.4"><span class="valueflow-value"></span></td>
-											<td data-value="0.4"><span class="valueflow-value"></span></td>
-											<td data-value="0.4"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_pttor']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_pttor']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_pttor']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_pttor']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>GPSC</th>
-											<td>2.5</td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_gpsc']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_gpsc']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_gpsc']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_gpsc']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>TBU</th>
-											<td><span class="valueflow-value"></span>-</td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_tbu']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_tbu']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_tbu']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_tbu']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>Total</th>
-											<td>102</td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
-											<td data-value="3.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_total_ptt']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_total_ptt']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 									</tbody>
 								</table>
@@ -521,31 +567,31 @@
 									<tbody>
 										<tr>
 											<th>MoE</th>
-											<td>66.7</td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_moe']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_moe']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_moe']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_moe']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>MoF</th>
-											<td>195.4</td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_mof']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_mof']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_mof']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_mof']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>Power Consumers</th>
-											<td>-</td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_power_consumers']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_power_consumers']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_power_consumers']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_power_consumers']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 										<tr>
 											<th>Total</th>
-											<td>262</td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
-											<td data-value="2.5"><span class="valueflow-value"></span></td>
+											<td><?= (!empty($base_data))?$base_data['vf_total_thailand']:'0' ?></td>
+											<td data-value="<?= (!empty($senario1_data))?$senario1_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario2_data))?$senario2_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
+											<td data-value="<?= (!empty($senario3_data))?$senario3_data['vf_total_thailand']:'0' ?>"><span class="valueflow-value"></span></td>
 										</tr>
 									</tbody>
 								</table>
@@ -700,3 +746,33 @@
 		<script type="text/javascript" src="scripts/index.js"></script>
 	</body>
 	</html>
+	<script type="">
+		$(document).ready(function(){
+			//getvaluesdata('getvaluesdata');
+			$(document).on('click','.scenario_check',function(){
+				var checked_senario = "";
+				if($(this).is(':checked') ){
+					getvaluesdata($(this).val());
+				}else{
+					$('.scenario_check').each(function(){
+						if($(this).is(':checked') ){
+							checked_senario  = $(this).val();
+						}
+					})
+					getvaluesdata(checked_senario);
+				}
+			})
+		})
+
+		getvaluesdata  = function(scenario){
+			$.ajax({
+		        type      : 'POST',
+		        url       : "<?= _URL ?>"+'ajax/get_value_data.php',
+		        data      : {scenario : scenario},
+		        dataType  : 'json'
+		    })
+		    .done(function(data){
+		        
+		    })
+		}
+	</script>
