@@ -43,6 +43,21 @@
 	}else{
 		$senario3_data  = [];
 	}
+
+	$datesql  = $sql  = 'SELECT planning_date FROM op_direct_master_base
+	ORDER BY planning_date DESC
+	LIMIT 4';
+	$datequery = mysqli_query($conn,$datesql); 
+	$base_num_rows = mysqli_num_rows($datequery);
+	if($base_num_rows>0){
+		$date  =  [];
+		while($row = mysqli_fetch_assoc($datequery)) {
+		    $date[] = $row['planning_date'];
+		}
+	}else{
+		$base_data  = [];
+	}
+	$date = array_reverse($date);
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,25 +115,25 @@
 							<h4>select month view</h4>
 							<div class="filter-list flex">
 								<div class="form-checkbox">
-									<input id="month-1" class="checkbox-custom" type="radio" name="scenario" value="month" checked="" />
+									<input id="month-1" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[0]; ?>" checked="" />
 									<label for="month-1" class="checkbox-custom-label">
 										<span>Month</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m1" class="checkbox-custom" type="radio" name="scenario" value="M+1" />
+									<input id="m1" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[1];?>" />
 									<label for="m1" class="checkbox-custom-label">
 										<span>M+1</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m2" class="checkbox-custom" type="radio" name="scenario" value="M+2" />
+									<input id="m2" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[2];?>" />
 									<label for="m2" class="checkbox-custom-label">
 										<span>M+2</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m3" class="checkbox-custom" type="radio" name="scenario" value="M+3" />
+									<input id="m3" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[3];?>" />
 									<label for="m3" class="checkbox-custom-label">
 										<span>M+3</span>
 									</label>
@@ -624,127 +639,127 @@
 					<ul class="gas-pipeline-value-lists" id="supply-category">
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>1127 </b>MMSCFD</span>
+							<span><b class="supply_pttep_input">1127 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>1691 </b>MMSCFD</span>
+							<span><b class="supply_got_other_input">1691 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>100 </b>MMSCFD</span>
+							<span><b class="supply_spot_lng_input">100 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>650 </b>MMSCFD</span>
+							<span><b class="supply_lng_contract_input">650 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>0 </b>MMSCFD</span>
+							<span><b class="supply_spot_lng_tp_input">0 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value supply-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>681 </b>MMSCFD</span>
+							<span><b class="supply_myanmar_import_input">681 </b>MMSCFD</span>
 						</li>
 					</ul>
 					<ul class="gas-pipeline-value-lists" id="conversion-category">
 						<li class="gas-pipeline-value conversion-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>2918 </b>MMSCFD</span>
+							<span><b class="supply_got_input">2918 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value conversion-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>1867 </b>MMSCFD</span>
+							<span><b class="conversion_pttgsp_c1">1867 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value conversion-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>686 </b>MMSCFD</span>
+							<span><b class="conversion_lng_terminal_c1">686 </b>MMSCFD</span>
 						</li>
 					</ul>
 					<ul class="gas-pipeline-value-lists" id="transmission-category">
 						<li class="gas-pipeline-value transmission-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>14,896 </b>Tn/d</span>
+							<span><b class="transmission_pttgsp_c2">14,896 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value transmission-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>3330 </b>Tn/d</span>
+							<span><b class="transmission_pttgsp_lpg">3330 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value transmission-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>452 </b>Tn/d</span>
+							<span><b class="transmission_refinery">452 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value transmission-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>140 </b>MMSCFD</span>
+							<span><b class="transmission_superheader_ngv">140 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value transmission-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>720 </b>MMSCFD</span>
+							<span><b class="transmission_superheader_indusers">720 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value transmission-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>1693 </b>MMSCFD</span>
+							<span><b class="transmission_superheader_opg">1693 </b>MMSCFD</span>
 						</li>
 					</ul>
 					<ul class="gas-pipeline-value-lists" id="salessector-category">
 						<li class="gas-pipeline-value salessector-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>7054 </b>Tn/d</span>
+							<span><b class="sales_petchem_c2">7054 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value salessector-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>3448 </b>Tn/d</span>
+							<span><b class="sales_petchem_c3">3448 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value salessector-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>2993 </b>Tn/d</span>
+							<span><b class="sales_petchem_lpg">2993 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value salessector-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1491 </b>Tn/d</span>
+							<span><b class="demand_gc_c3">1491 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value salessector-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>3782 </b>Tn/d</span>
+							<span><b class="sales_lpg_domestic">3782 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value salessector-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>2374 </b>MMSCFD</span>
+							<span><b class="sales_opg">2374 </b>MMSCFD</span>
 						</li>
 					</ul>
 					<ul class="gas-pipeline-value-lists" id="demandendnode-category">
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1915 </b>Tn/d</span>
+							<span><b class="demand_lpg_or">1915 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1915 </b>Tn/d</span>
+							<span><b class="demand_lpg_other">1915 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>475 </b>Tn/d</span>
+							<span><b class="demand_c1_gpsc">475 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1899 </b>Tn/d</span>
+							<span><b class="demand_other">1899 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1915 </b>Tn/d</span>
+							<span><b class="vf_summary_ptt">1915 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/awesome-weight-hanging.svg" alt="Icon" class="inactive-img" />
 							<img src="images/awesome-weight-hanging-active.svg" alt="Icon" class="active-img" />
-							<span><b>1915 </b>Tn/d</span>
+							<span><b class="vf_summary_ptt">1915 </b>Tn/d</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>475 </b>MMSCFD</span>
+							<span><b class="vf_pttep">475 </b>MMSCFD</span>
 						</li>
 						<li class="gas-pipeline-value demandendnode-value"><img src="images/open-droplet.svg" class="inactive-img" alt="Icon" />
 							<img src="images/open-droplet-active.svg" class="active-img" alt="Icon" />
-							<span><b>1899 </b>MMSCFD</span>
+							<span><b class="vf_gsm">1899 </b>MMSCFD</span>
 						</li>
 					</ul>
 				</div>
@@ -766,31 +781,52 @@
 	</html>
 	<script type="">
 		$(document).ready(function(){
-			//getvaluesdata('getvaluesdata');
+			var monthValue = $("input[name=scenario_date]:checked").val();
+			getvaluesdata('base_scenario',monthValue);
 			$(document).on('click','.scenario_check',function(){
+				monthValue = $("input[name=scenario_date]:checked").val();
 				var checked_senario = "";
 				if($(this).is(':checked') ){
-					getvaluesdata($(this).val());
+					getvaluesdata($(this).val(),monthValue);
 				}else{
 					$('.scenario_check').each(function(){
 						if($(this).is(':checked') ){
 							checked_senario  = $(this).val();
 						}
 					})
-					getvaluesdata(checked_senario);
+					getvaluesdata(checked_senario,monthValue);
 				}
+			})
+			$(document).on('change',"input[name=scenario_date]",function(){
+				var monthValue = $(this).val();
+				var checked_senario = "";
+				$('.scenario_check').each(function(){
+					if($(this).is(':checked') ){
+						checked_senario  = $(this).val();
+					}
+				})
+				getvaluesdata(checked_senario,monthValue);
 			})
 		})
 
-		getvaluesdata  = function(scenario){
+		getvaluesdata  = function(scenario,monthValue){
 			$.ajax({
 		        type      : 'POST',
 		        url       : "<?= _URL ?>"+'ajax/get_value_data.php',
-		        data      : {scenario : scenario},
+		        data      : {scenario : scenario,monthValue:monthValue},
 		        dataType  : 'json'
 		    })
 		    .done(function(data){
-		        
+		        if(data.status){
+		        	$.each(data.data,function(key,val){
+		        		//alert(val);
+		        		$("."+key).text(val);
+		        	})
+		        }else{
+		        	$(".gas-pipeline-value-lists").each(function(){
+		        		$(this).find('li').find('span').find('b').text("");
+		        	})
+		        }
 		    })
 		}
 	</script>
