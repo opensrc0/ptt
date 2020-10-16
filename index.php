@@ -248,42 +248,42 @@
 							<table class="detailed-info-table">
 								<tr>
 									<th>GoT PTTEP</th>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($base_data))?$base_data['supply_pttep_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
+									<td data-value="<?= (!empty($senario1_data))?$senario1_data['supply_pttep_input']:""; ?>" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
+									<td data-value="<?= (!empty($senario2_data))?$senario2_data['supply_pttep_input']:""; ?>" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_pttep_input']:""; ?>" data-dcq="1000" data-operation="2000"><span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
 								</tr>
 								<tr>
 									<th>GoT Others</th>
-									<td data-value="1691" data-dcq="1491" data-operation="2000">
+									<td data-value="<?= (!empty($base_data))?$base_data['supply_got_other_input']:""; ?>" data-dcq="1491" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario1_data))?$senario1_data['supply_got_other_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario2_data))?$senario2_data['supply_got_other_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_got_other_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
@@ -291,22 +291,22 @@
 								</tr>
 								<tr>
 									<th>Myanmar</th>
-									<td data-value="581" data-dcq="581" data-operation="1000">
+									<td data-value="<?= (!empty($base_data))?$base_data['supply_myanmar_import_input']:""; ?>" data-dcq="581" data-operation="1000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario1_data))?$senario1_data['supply_myanmar_import_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario2_data))?$senario2_data['supply_myanmar_import_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_myanmar_import_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
@@ -314,22 +314,22 @@
 								</tr>
 								<tr>
 									<th>LNG Term</th>
-									<td data-value="660" data-dcq="660" data-operation="0">
+									<td data-value="<?= (!empty($base_data))?$base_data['conversion_lng_terminal_c1']:""; ?>" data-dcq="750" data-operation="0">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario1_data))?$senario1_data['conversion_lng_terminal_c1']:""; ?>"" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario2_data))?$senario2_data['conversion_lng_terminal_c1']:""; ?>"" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['conversion_lng_terminal_c1']:""; ?>"" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
@@ -337,22 +337,22 @@
 								</tr>
 								<tr>
 									<th>LNG Spot</th>
-									<td data-value="100" data-dcq="100" data-operation="0">
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_spot_lng_input']:""; ?>" data-dcq="100" data-operation="0">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario1_data))?$senario1_data['supply_spot_lng_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario2_data))?$senario2_data['supply_spot_lng_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
 									</td>
-									<td data-value="1127" data-dcq="1000" data-operation="2000">
+									<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_spot_lng_input']:""; ?>" data-dcq="1000" data-operation="2000">
 										<span class="null-value">-</span>
 										<span class="operational-maximum-value"></span>
 										<span class="dcq-value"></span>
@@ -361,22 +361,22 @@
 								<tr>
 									<th>LNG <br/>
 										<span>(By 3rd Party)</span></th>
-										<td data-value="0" data-dcq="0" data-operation="0">
+										<td data-value="<?= (!empty($base_data))?$base_data['supply_spot_lng_tp_input']:""; ?>" data-dcq="0" data-operation="0">
 											<span class="null-value">-</span>
 											<span class="operational-maximum-value"></span>
 											<span class="dcq-value"></span>
 										</td>
-										<td data-value="1127" data-dcq="1000" data-operation="2000">
+										<td data-value="<?= (!empty($senario1_data))?$senario1_data['supply_spot_lng_tp_input']:""; ?>" data-dcq="1000" data-operation="2000">
 											<span class="null-value">-</span>
 											<span class="operational-maximum-value"></span>
 											<span class="dcq-value"></span>
 										</td>
-										<td data-value="1127" data-dcq="1000" data-operation="2000">
+										<td data-value="<?= (!empty($senario2_data))?$senario2_data['supply_spot_lng_tp_input']:""; ?>" data-dcq="1000" data-operation="2000">
 											<span class="null-value">-</span>
 											<span class="operational-maximum-value"></span>
 											<span class="dcq-value"></span>
 										</td>
-										<td data-value="1127" data-dcq="1000" data-operation="2000">
+										<td data-value="<?= (!empty($senario3_data))?$senario3_data['supply_spot_lng_tp_input']:""; ?>" data-dcq="1000" data-operation="2000">
 											<span class="null-value">-</span>
 											<span class="operational-maximum-value"></span>
 											<span class="dcq-value"></span>
