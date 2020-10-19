@@ -1,31 +1,38 @@
 <?php
 include "../config/config.php";
 if (isset($_POST)) {
-	$planningDate = $_POST['planningDate'];
-	$revisionName = $_POST['revisionName'];
-	$months = $_POST['months'];
-	$type = $_POST['type'];
-
-	$table  = 'op_direct_master_base';
-	$sql  = 'SELECT * FROM '.$table.'
-		WHERE planning_date = "'.$planningDate.'"
-		&& revision_name = "'.$revisionName.'"
-		&& months = "'.$months.'"
-		&& type IN ("'.join('","',$type).'")
-		';
-	$query = mysqli_query($conn,$sql); 
-	$num_rows = mysqli_num_rows($query);
-	
+	$scenario  = trim($_POST['scenario']);
+	$monthvalue = $_POST['monthValue'];
+	switch ($scenario) {
+		case 'base_scenario':
+			$table  = 'op_direct_master_base';
+		break;
+		case 'scenario_1':
+			$table  = 'op_direct_master_senario_1';
+		break;
+		case 'scenario_2':
+			$table  = 'op_direct_master_senario_2';
+		break;
+		case 'scenario_3':
+			$table  = 'op_direct_master_senario_3';
+		break;
+	}
 	if(!empty($table)){
+		$sql  = 'SELECT * FROM '.$table.'
+        WHERE planning_date = "'.$monthvalue.'"';
+        print_r($sql);
+        exit;
+		$query = mysqli_query($conn,$sql); 
+		$num_rows = mysqli_num_rows($query);
 	    if($num_rows>0)
 		{
-			for($i=0;$i<$num_rows;$i++) {
-				$res[$i] = mysqli_fetch_assoc($query);
-			}
+			$res=mysqli_fetch_assoc($query);
+			//$users_id=$res['users_id'];
 			$return_data  = array(
 				'status' =>true,
 				'data'=> $res
 			);
+			
 		}
 		else
 		{

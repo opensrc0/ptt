@@ -1,63 +1,106 @@
 <?php
 	include "config/config.php";
-	$basesql  = $sql  = 'SELECT * FROM op_direct_master_base
-	ORDER BY planning_date DESC
-	LIMIT 1';
-	$basequery = mysqli_query($conn,$basesql); 
-	$base_num_rows = mysqli_num_rows($basequery);
-	if($base_num_rows>0){
-		$base_data = mysqli_fetch_assoc($basequery);
-	}else{
-		$base_data  = [];
-	}
-	$senario1sql  = $sql  = 'SELECT * FROM op_direct_master_senario_1
-	ORDER BY planning_date DESC
-	LIMIT 1';
-	$senario1query = mysqli_query($conn,$senario1sql); 
-	$senario1_num_rows = mysqli_num_rows($senario1query);
-	if($senario1_num_rows>0){
-		$senario1_data = mysqli_fetch_assoc($senario1query);
-	}else{
-		$senario1_data  = [];
-	}
+	
+	$planning_datesql  = 'SELECT DISTINCT planning_date FROM op_direct_master_base';
+	$planning_datequery = mysqli_query($conn,$planning_datesql); 
+	$planning_datebase_num_rows = mysqli_num_rows($planning_datequery);
+	$selectedDate = '';
 
-
-	$senario2sql  = $sql  = 'SELECT * FROM op_direct_master_senario_2
-	ORDER BY planning_date DESC
-	LIMIT 1';
-	$senario2query = mysqli_query($conn,$senario2sql); 
-	$senario2_num_rows = mysqli_num_rows($senario2query);
-	if($senario2_num_rows>0){
-		$senario2_data = mysqli_fetch_assoc($senario2query);
-	}else{
-		$senario2_data  = [];
-	}
-
-	$senario3sql  = $sql  = 'SELECT * FROM op_direct_master_senario_3
-	ORDER BY planning_date DESC
-	LIMIT 1';
-	$senario3query = mysqli_query($conn,$senario3sql); 
-	$senario3_num_rows = mysqli_num_rows($senario3query);
-	if($senario3_num_rows>0){
-		$senario3_data = mysqli_fetch_assoc($senario3query);
-	}else{
-		$senario3_data  = [];
-	}
-
-	$datesql  = $sql  = 'SELECT planning_date FROM op_direct_master_base
-	ORDER BY planning_date DESC
-	LIMIT 4';
-	$datequery = mysqli_query($conn,$datesql); 
-	$base_num_rows = mysqli_num_rows($datequery);
-	if($base_num_rows>0){
-		$date  =  [];
-		while($row = mysqli_fetch_assoc($datequery)) {
-		    $date[] = $row['planning_date'];
+	if($planning_datebase_num_rows>0){
+		$planning_date = '';
+		
+		for($i = 0; $i < $planning_datebase_num_rows; $i++) {
+			
+			$base_data1 = mysqli_fetch_assoc($planning_datequery);
+			if($i === 0) {
+				$selectedDate = $base_data1;
+			}
+			$planning_date .= '<option>'.$base_data1['planning_date'].'</option>';
+			// $revision_name .= '<option>'.$base_data1['revision_name'].'</option>';
+			// $months[$base_data1['op_direct_master_base_id']] =  $base_data1['months'];
 		}
 	}else{
 		$base_data  = [];
 	}
-	$date = array_reverse($date);
+
+	// $selectedDate = mysqli_fetch_assoc($planning_datequery);
+
+
+
+	$basesql = 'SELECT DISTINCT revision_name FROM op_direct_master_base where planning_date = "'.$selectedDate['planning_date'].'"';
+	$basequery = mysqli_query($conn,$basesql); 
+	$base_num_rows = mysqli_num_rows($basequery);
+
+	if($base_num_rows>0){
+		$revision_name = '';
+		for($i = 0; $i < $base_num_rows; $i++) {
+			$base_data1 = mysqli_fetch_assoc($basequery);
+			$revision_name .= '<option>'.$base_data1['revision_name'].'</option>';
+			// $months[$base_data1['op_direct_master_base_id']] =  $base_data1['months'];
+		}
+	}else{
+		$base_data  = [];
+	}
+
+	// print_r($base_data);
+	// printf($base_data['	']);
+	// printf($base_data['revision_name']);
+	// print_r($base_data['planning_date']);
+	// print_r($base_data['months']);
+	
+	// exit;
+
+	// $senario1sql  = $sql  = 'SELECT * FROM op_direct_master_senario_1
+	// ORDER BY planning_date DESC
+	// LIMIT 1';
+	// $senario1query = mysqli_query($conn,$senario1sql); 
+	// $senario1_num_rows = mysqli_num_rows($senario1query);
+	// if($senario1_num_rows>0){
+	// 	$senario1_data = mysqli_fetch_assoc($senario1query);
+	// }else{
+	// 	$senario1_data  = [];
+	// }
+	// print_r($senario1sql);
+
+
+	// $senario2sql  = $sql  = 'SELECT * FROM op_direct_master_senario_2 ORDER BY planning_date DESC LIMIT 1';
+	// $senario2query = mysqli_query($conn,$senario2sql); 
+	// $senario2_num_rows = mysqli_num_rows($senario2query);
+	// if($senario2_num_rows>0){
+	// 	$senario2_data = mysqli_fetch_assoc($senario2query);
+	// }else{
+	// 	$senario2_data  = [];
+	// }
+	// print_r($senario2_data);
+
+	// $senario3sql  = $sql  = 'SELECT * FROM op_direct_master_senario_3
+	// ORDER BY planning_date DESC
+	// LIMIT 1';
+	// $senario3query = mysqli_query($conn,$senario3sql); 
+	// $senario3_num_rows = mysqli_num_rows($senario3query);
+	// if($senario3_num_rows>0){
+	// 	$senario3_data = mysqli_fetch_assoc($senario3query);
+	// }else{
+	// 	$senario3_data  = [];
+	// }
+	// print_r($senario3_data);
+
+	// $datesql  = $sql  = 'SELECT planning_date FROM op_direct_master_base
+	// ORDER BY planning_date DESC
+	// LIMIT 4';
+	// $datequery = mysqli_query($conn,$datesql); 
+	// $base_num_rows = mysqli_num_rows($datequery);
+	// $date  =  [];
+
+	// // printf($base_num_rows);
+	// if($base_num_rows>0){
+	// 	while($row = mysqli_fetch_assoc($datequery)) {
+	// 	    $date[] = $row['planning_date'];
+	// 	}
+	// }else{
+	// 	$base_data  = [];
+	// }
+	// $date = array_reverse($date);
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,31 +123,46 @@
 					<img src="images/logo-ptt.svg" alt="Logo" />
 					<h1>gas value chain</h1>
 				</a>
+				<div class="flex mt_40">
+					<div class="mr_8">
+						<div class="white bold mb_4">PLANNING DATE</div>
+						<select onchange="dateSelected(event)" id="planningDate">
+							<?php echo $planning_date ?>	
+						</select>
+					</div>
+
+					<div>
+						<div class="white bold mb_4">REVISION NAME</div>
+						<select id="revision_name" onchange="revisionNameSelected(event)">
+							<?php echo $revision_name ?>
+						</select>
+					</div>
+				</div>
 				<div class="filter-wrapper">
 					<form class="scenario-filter-form">
 						<div class="nomination-filter-wrapper">
 							<h4>choose a Nomination Scenario</h4>
 							<div class="filter-list flex">
 								<div class="form-checkbox">
-									<input id="base-scenario" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="base_scenario" checked="" />
+									<input id="base-scenario" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="base-scenario" checked="" />
 									<label for="base-scenario" class="checkbox-custom-label">
 										<span>Base Scenario</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-1" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_1">
+									<input id="scenario-1" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario-1">
 									<label for="scenario-1" class="checkbox-custom-label">
 										<span>Scenario 01</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-2" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_2">
+									<input id="scenario-2" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario-2">
 									<label for="scenario-2" class="checkbox-custom-label">
 										<span>Scenario 02</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="scenario-3" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario_3">
+									<input id="scenario-3" class="checkbox-custom scenario_check" type="checkbox" name="scenario" value="scenario-3">
 									<label for="scenario-3" class="checkbox-custom-label">
 										<span>Scenario 03</span>
 									</label>
@@ -115,25 +173,20 @@
 							<h4>select month view</h4>
 							<div class="filter-list flex">
 								<div class="form-checkbox">
-									<input id="month-1" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[0]; ?>" checked="" />
-									<label for="month-1" class="checkbox-custom-label">
-										<span>Month</span>
-									</label>
-								</div>
-								<div class="form-checkbox">
-									<input id="m1" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[1];?>" />
+									<input id="m1" class="checkbox-custom" type="radio" name="scenario_date" value="M+1" checked="" />
 									<label for="m1" class="checkbox-custom-label">
 										<span>M+1</span>
 									</label>
 								</div>
+								
 								<div class="form-checkbox">
-									<input id="m2" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[2];?>" />
+									<input id="m2" class="checkbox-custom" type="radio" name="scenario_date" value="M+2" />
 									<label for="m2" class="checkbox-custom-label">
 										<span>M+2</span>
 									</label>
 								</div>
 								<div class="form-checkbox">
-									<input id="m3" class="checkbox-custom" type="radio" name="scenario_date" value="<?= $date[3];?>" />
+									<input id="m3" class="checkbox-custom" type="radio" name="scenario_date" value="M+3" />
 									<label for="m3" class="checkbox-custom-label">
 										<span>M+3</span>
 									</label>
@@ -780,53 +833,132 @@
 	</body>
 	</html>
 	<script type="">
-		$(document).ready(function(){
-			var monthValue = $("input[name=scenario_date]:checked").val();
-			getvaluesdata('base_scenario',monthValue);
-			$(document).on('click','.scenario_check',function(){
-				monthValue = $("input[name=scenario_date]:checked").val();
-				var checked_senario = "";
-				if($(this).is(':checked') ){
-					getvaluesdata($(this).val(),monthValue);
-				}else{
-					$('.scenario_check').each(function(){
-						if($(this).is(':checked') ){
-							checked_senario  = $(this).val();
-						}
-					})
-					getvaluesdata(checked_senario,monthValue);
-				}
-			})
-			$(document).on('change',"input[name=scenario_date]",function(){
-				var monthValue = $(this).val();
-				var checked_senario = "";
-				$('.scenario_check').each(function(){
-					if($(this).is(':checked') ){
-						checked_senario  = $(this).val();
-					}
-				})
-				getvaluesdata(checked_senario,monthValue);
-			})
-		})
 
-		getvaluesdata  = function(scenario,monthValue){
+		var planningDate = document.querySelector("#planningDate").value;
+		var revisionName = document.querySelector("#revision_name").value;
+		var type = ['base-scenario'];
+		var months = 'M+1';
+		// $(document).ready(function(){
+		// 	var monthValue = $("input[name=scenario_date]:checked").val();
+		// 	getvaluesdata('base_scenario',monthValue);
+		// 	$(document).on('click','.scenario_check',function(){
+		// 		monthValue = $("input[name=scenario_date]:checked").val();
+		// 		var checked_senario = "";
+		// 		if($(this).is(':checked') ){
+		// 			getvaluesdata($(this).val(), monthValue, 'scenario', planningDate, revisionName);
+		// 		}else{
+		// 			$('.scenario_check').each(function(){
+		// 				if($(this).is(':checked') ){
+		// 					checked_senario  = $(this).val();
+		// 				}
+		// 			})
+		// 			getvaluesdata(checked_senario, monthValue, 'scenario', planningDate, revisionName);
+		// 		}
+		// 	})
+		// 	$(document).on('change',"input[name=scenario_date]",function(){
+		// 		var monthValue = $(this).val();
+		// 		var checked_senario = "";
+		// 		$('.scenario_check').each(function(){
+		// 			if($(this).is(':checked') ){
+		// 				checked_senario  = $(this).val();
+		// 			}
+		// 		})
+		// 		getvaluesdata(checked_senario,monthValue);
+		// 	})
+		// })
+
+		getvaluesdata  = function(planningDate, revisionName, months, type){
 			$.ajax({
 		        type      : 'POST',
 		        url       : "<?= _URL ?>"+'ajax/get_value_data.php',
-		        data      : {scenario : scenario,monthValue:monthValue},
+		        data      : {
+					planningDate: planningDate,
+					revisionName: revisionName, 
+					months: months, 
+					type: type
+				},
 		        dataType  : 'json'
 		    })
 		    .done(function(data){
-		        if(data.status){
-		        	$.each(data.data,function(key,val){
-		        		//alert(val);
-		        		$("."+key).text(val);
-		        	})
-		        }else{
+		        if(data.status) {
+					$.each(data.data,function(key,val){
+						if(val.type === 'base-scenario') {
+							baseCase(val.supply_pttep_input, 
+								val.supply_got_other_input, 
+								val.supply_spot_lng_input, 
+								val.supply_lng_contract_input, 
+								val.supply_spot_lng_tp_input, 
+								val.supply_myanmar_import_input
+							);
+						}
+
+						if(val.type === 'scenario-1') {
+							senerio1(val.supply_pttep_input, 
+								val.supply_got_other_input, 
+								val.supply_spot_lng_input, 
+								val.supply_lng_contract_input, 
+								val.supply_spot_lng_tp_input, 
+								val.supply_myanmar_import_input
+							);
+						}
+
+						if(val.type === 'scenario-2') {
+							senerio2(val.supply_pttep_input, 
+								val.supply_got_other_input, 
+								val.supply_spot_lng_input, 
+								val.supply_lng_contract_input, 
+								val.supply_spot_lng_tp_input, 
+								val.supply_myanmar_import_input
+							);
+						}
+
+						if(val.type === 'scenario-3') {
+							senerio3(val.supply_pttep_input, 
+								val.supply_got_other_input, 
+								val.supply_spot_lng_input, 
+								val.supply_lng_contract_input, 
+								val.supply_spot_lng_tp_input, 
+								val.supply_myanmar_import_input
+							);
+						}
+					})
+		        } else {
 		        	$(".gas-pipeline-value-lists").each(function(){
 		        		$(this).find('li').find('span').find('b').text("");
 		        	})
 		        }
 		    })
 		}
+
+		getvaluesdata(planningDate, revisionName, months, type);
+
+		function dateSelected(e) {
+			planningDate = e.target.value;
+			getvaluesdata(planningDate, revisionName, months, type);
+		}
+
+		function revisionNameSelected(e) {
+			revisionName = e.target.value;
+			getvaluesdata(planningDate, revisionName, months, type);
+		}
+
+		$(document).on('click','.scenario_check',function(){
+			if($(this).is(':checked') ){
+				type.push($(this).val());
+			}else{
+				// type.splish
+				getvaluesdata(planningDate, revisionName, months, '');
+			}
+			getvaluesdata(planningDate, revisionName, months, [$(this).val()]);
+
+		});
+
+		$(document).on('change',"input[name=scenario_date]",function(){
+			months = $(this).val();
+			$('.scenario_check').each(function(){
+				if($(this).is(':checked')){
+					getvaluesdata(planningDate, revisionName, months, type);
+				}
+			})
+		});
 	</script>

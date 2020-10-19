@@ -171,6 +171,36 @@ section {
 .date-filter-wrapper .revision-name-wrapper{
   width: 50%;
 }
+.flex {
+  display: flex;
+}
+.white {
+  color: #fff;
+}
+select {
+  /* appearance: none; */
+  border-radius: 4px;
+  padding: 10px;
+  background: black;
+  color: #14AFDC;
+  border: 1px solid #14AFDC;
+  width: 250px;
+}
+.mr_8 {
+  margin-right: 8px;
+}
+
+.mb_4{
+  margin-bottom: 4px;
+}
+
+.mt_40{
+  margin-top: 40px;
+}
+
+.bold {
+  font-weight: bold;
+}
 .date-filter-wrapper select{
   width: 80%;
   padding: 7px;
@@ -217,7 +247,7 @@ section {
  font-family: 'biosans-extrabold',sans-serif;
 }
 .filter-wrapper {
-  margin-top: 59px;
+  margin-top: 40px;
 }
 .filter-wrapper h4 {
   color: #FFFFFF;

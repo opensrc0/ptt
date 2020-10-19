@@ -1,4 +1,293 @@
-$(document).ready(function(){
+function baseCase(supply_pttep_input, 
+	supply_got_other_input, 
+	supply_spot_lng_input, 
+	supply_lng_contract_input, 
+	supply_spot_lng_tp_input, 
+	supply_myanmar_import_input) {
+	baseCaseScenario = new Highcharts.Chart({
+		chart: {
+			renderTo: 'base-chart',
+			type: 'pie',
+			width: 246,
+			height: 246
+		},
+		title: {
+			verticalAlign: 'middle',
+			floating: true,
+			text: '<i></i>'
+		},
+		yAxis: {
+			title: {
+				text: ''
+			}
+		},
+		plotOptions: {
+			pie: {
+				shadow: false
+			}
+		},
+		series: [{
+			data: [   
+				{
+					name: 'SPOT LNG', 
+					y: parseInt(supply_spot_lng_input) || 0, 
+					color: '#474295'
+				},
+				{
+					name: 'GoT Others', 
+					y: parseInt(supply_got_other_input) || 0, 
+					color: '#877D4A' 
+				},
+				{
+					name: 'GoT PTTEP', 
+					y: parseInt(supply_pttep_input) || 0, 
+					color: '#0FB2EF'
+				},
+				{
+					name: 'LNG(Contract)', 
+					y: parseInt(supply_lng_contract_input) || 0, 
+					color: '#303D6F'
+				},
+				{
+					name: 'LNG (By 3rd Party)', 
+					y: parseInt(supply_spot_lng_tp_input) || 0, 
+					color: '#A1E5FF'
+				},
+				{
+					name: 'Myanmar Import', 
+					y: parseInt(supply_myanmar_import_input) || 0, 
+					color: '#34B233'
+				},
+			],
+			innerSize: 68,
+			showInLegend:true,
+			dataLabels: {
+				enabled: false
+			}
+		}]
+	});
+};
+
+function senerio1 (
+	supply_pttep_input, 
+	supply_got_other_input, 
+	supply_spot_lng_input, 
+	supply_lng_contract_input, 
+	supply_spot_lng_tp_input, 
+	supply_myanmar_import_input
+) {
+	 //scenarioOne
+	 scenarioOne = new Highcharts.Chart({
+		chart: {
+			renderTo: 'scenario1-chart',
+			type: 'pie',
+			width: 246,
+			height: 246
+		},
+		title: {
+			verticalAlign: 'middle',
+			floating: true,
+			text: '<i></i>'
+		},
+		yAxis: {
+			title: {
+				text: ''
+			}
+		},
+		plotOptions: {
+			pie: {
+				shadow: false
+			}
+		},
+		series: [{
+			data: [   
+				{
+					name: 'SPOT LNG', 
+					y: parseInt(supply_spot_lng_input) || 0, 
+					color: '#474295'
+				},
+				{
+					name: 'GoT Others', 
+					y: parseInt(supply_got_other_input) || 0, 
+					color: '#877D4A' 
+				},
+				{
+					name: 'GoT PTTEP', 
+					y: parseInt(supply_pttep_input) || 0, 
+					color: '#0FB2EF'
+				},
+				{
+					name: 'LNG(Contract)', 
+					y: parseInt(supply_lng_contract_input) || 0, 
+					color: '#303D6F'
+				},
+				{
+					name: 'LNG (By 3rd Party)', 
+					y: parseInt(supply_spot_lng_tp_input) || 0, 
+					color: '#A1E5FF'
+				},
+				{
+					name: 'Myanmar Import', 
+					y: parseInt(supply_myanmar_import_input) || 0, 
+					color: '#34B233'
+				},
+			],
+			innerSize: 68,
+			showInLegend:true,
+			dataLabels: {
+				enabled: false
+			}
+		}]
+	});
+}
+
+function senerio2 (
+	supply_pttep_input, 
+	supply_got_other_input, 
+	supply_spot_lng_input, 
+	supply_lng_contract_input, 
+	supply_spot_lng_tp_input, 
+	supply_myanmar_import_input
+) {
+	//scenarioTwo
+	scenarioTwo = new Highcharts.Chart({
+		chart: {
+			renderTo: 'scenario2-chart',
+			type: 'pie',
+			width: 246,
+			height: 246
+		},
+		title: {
+			verticalAlign: 'middle',
+			floating: true,
+			text: '<i></i>'
+		},
+		yAxis: {
+			title: {
+				text: ''
+			}
+		},
+		plotOptions: {
+			pie: {
+				shadow: false
+			}
+		},
+		series: [{
+			data: [   
+				{
+					name: 'SPOT LNG', 
+					y: parseInt(supply_spot_lng_input) || 0, 
+					color: '#474295'
+				},
+				{
+					name: 'GoT Others', 
+					y: parseInt(supply_got_other_input) || 0, 
+					color: '#877D4A' 
+				},
+				{
+					name: 'GoT PTTEP', 
+					y: parseInt(supply_pttep_input) || 0, 
+					color: '#0FB2EF'
+				},
+				{
+					name: 'LNG(Contract)', 
+					y: parseInt(supply_lng_contract_input) || 0, 
+					color: '#303D6F'
+				},
+				{
+					name: 'LNG (By 3rd Party)', 
+					y: parseInt(supply_spot_lng_tp_input) || 0, 
+					color: '#A1E5FF'
+				},
+				{
+					name: 'Myanmar Import', 
+					y: parseInt(supply_myanmar_import_input) || 0, 
+					color: '#34B233'
+				},
+			],
+			innerSize: 68,
+			showInLegend:true,
+			dataLabels: {
+				enabled: false
+			}
+		}]
+	});
+}
+
+function senerio3(
+	supply_pttep_input, 
+	supply_got_other_input, 
+	supply_spot_lng_input, 
+	supply_lng_contract_input, 
+	supply_spot_lng_tp_input, 
+	supply_myanmar_import_input
+) {
+	   //scenarioThree
+	   scenarioThree = new Highcharts.Chart({
+		chart: {
+			renderTo: 'scenario3-chart',
+			type: 'pie',
+			width: 246,
+			height: 246
+		},
+		title: {
+			verticalAlign: 'middle',
+			floating: true,
+			text: '<i></i>'
+		},
+		yAxis: {
+			title: {
+				text: ''
+			}
+		},
+		plotOptions: {
+			pie: {
+				shadow: false
+			}
+		},
+		series: [{
+			data: [   
+				{
+					name: 'SPOT LNG', 
+					y: parseInt(supply_spot_lng_input) || 0, 
+					color: '#474295'
+				},
+				{
+					name: 'GoT Others', 
+					y: parseInt(supply_got_other_input) || 0, 
+					color: '#877D4A' 
+				},
+				{
+					name: 'GoT PTTEP', 
+					y: parseInt(supply_pttep_input) || 0, 
+					color: '#0FB2EF'
+				},
+				{
+					name: 'LNG(Contract)', 
+					y: parseInt(supply_lng_contract_input) || 0, 
+					color: '#303D6F'
+				},
+				{
+					name: 'LNG (By 3rd Party)', 
+					y: parseInt(supply_spot_lng_tp_input) || 0, 
+					color: '#A1E5FF'
+				},
+				{
+					name: 'Myanmar Import', 
+					y: parseInt(supply_myanmar_import_input) || 0, 
+					color: '#34B233'
+				},
+			],
+			innerSize: 68,
+			showInLegend:true,
+			dataLabels: {
+				enabled: false
+			}
+		}]
+	});
+}
+
+$(document).ready(function() {
 
 	$("body").addClass("loaded");
 
@@ -84,243 +373,15 @@ $(document).ready(function(){
 			$(this).removeClass("low-flowvalue");
 		}
 	});
+	var baseCaseScenario, scenarioOne, scenarioTwo, scenarioThree;
 
+
+	baseCase();
         // Create the chart
-        var baseCaseScenario, scenarioOne, scenarioTwo, scenarioThree;
-        baseCaseScenario = new Highcharts.Chart({
-        	chart: {
-        		renderTo: 'base-chart',
-        		type: 'pie',
-        		width: 246,
-        		height: 246
-        	},
-        	title: {
-        		verticalAlign: 'middle',
-        		floating: true,
-        		text: '<i></i>'
-        	},
-        	yAxis: {
-        		title: {
-        			text: ''
-        		}
-        	},
-        	plotOptions: {
-        		pie: {
-        			shadow: false
-        		}
-        	},
-        	series: [{
-        		data: [   
-        		{
-        			name: 'SPOT LNG', 
-        			y: 45, 
-        			color: '#474295'
-        		},
-        		{
-        			name: 'GoT Others', 
-        			y: 15, 
-        			color: '#877D4A' 
-        		},
-        		{
-        			name: 'GoT PTTEP', 
-        			y: 10, 
-        			color: '#0FB2EF'
-        		},
-        		{
-        			name: 'Myanmar Import', 
-        			y: 10, 
-        			color: '#303D6F'
-        		},
-        		{
-        			name: 'LNG (By 3rd Party)', 
-        			y: 20, 
-        			color: '#A1E5FF'
-        		}
-        		],
-        		innerSize: 68,
-        		showInLegend:true,
-        		dataLabels: {
-        			enabled: false
-        		}
-        	}]
-        });
-
-        //scenarioOne
-        scenarioOne = new Highcharts.Chart({
-        	chart: {
-        		renderTo: 'scenario1-chart',
-        		type: 'pie',
-        		width: 246,
-        		height: 246
-        	},
-        	title: {
-        		verticalAlign: 'middle',
-        		floating: true,
-        		text: '<i></i>'
-        	},
-        	yAxis: {
-        		title: {
-        			text: ''
-        		}
-        	},
-        	plotOptions: {
-        		pie: {
-        			shadow: false
-        		}
-        	},
-        	series: [{
-        		data: [   
-        		{
-        			name: 'SPOT LNG', 
-        			y: 45, 
-        			color: '#474295'
-        		},
-        		{
-        			name: 'GoT Others', 
-        			y: 15, 
-        			color: '#877D4A' 
-        		},
-        		{
-        			name: 'GoT PTTEP', 
-        			y: 10, 
-        			color: '#0FB2EF'
-        		},
-        		{
-        			name: 'Myanmar Import', 
-        			y: 10, 
-        			color: '#303D6F'
-        		},
-        		{
-        			name: 'LNG (By 3rd Party)', 
-        			y: 20, 
-        			color: '#A1E5FF'
-        		}
-        		],
-        		innerSize: 68,
-        		showInLegend:true,
-        		dataLabels: {
-        			enabled: false
-        		}
-        	}]
-        });
-
-        //scenarioTwo
-        scenarioTwo = new Highcharts.Chart({
-        	chart: {
-        		renderTo: 'scenario2-chart',
-        		type: 'pie',
-        		width: 246,
-        		height: 246
-        	},
-        	title: {
-        		verticalAlign: 'middle',
-        		floating: true,
-        		text: '<i></i>'
-        	},
-        	yAxis: {
-        		title: {
-        			text: ''
-        		}
-        	},
-        	plotOptions: {
-        		pie: {
-        			shadow: false
-        		}
-        	},
-        	series: [{
-        		data: [   
-        		{
-        			name: 'SPOT LNG', 
-        			y: 45, 
-        			color: '#474295'
-        		},
-        		{
-        			name: 'GoT Others', 
-        			y: 15, 
-        			color: '#877D4A' 
-        		},
-        		{
-        			name: 'GoT PTTEP', 
-        			y: 10, 
-        			color: '#0FB2EF'
-        		},
-        		{
-        			name: 'Myanmar Import', 
-        			y: 10, 
-        			color: '#303D6F'
-        		},
-        		{
-        			name: 'LNG (By 3rd Party)', 
-        			y: 20, 
-        			color: '#A1E5FF'
-        		}
-        		],
-        		innerSize: 68,
-        		showInLegend:true,
-        		dataLabels: {
-        			enabled: false
-        		}
-        	}]
-        });
-
-        //scenarioThree
-        scenarioThree = new Highcharts.Chart({
-        	chart: {
-        		renderTo: 'scenario3-chart',
-        		type: 'pie',
-        		width: 246,
-        		height: 246
-        	},
-        	title: {
-        		verticalAlign: 'middle',
-        		floating: true,
-        		text: '<i></i>'
-        	},
-        	yAxis: {
-        		title: {
-        			text: ''
-        		}
-        	},
-        	plotOptions: {
-        		pie: {
-        			shadow: false
-        		}
-        	},
-        	series: [{
-        		data: [   
-        		{
-        			name: 'SPOT LNG', 
-        			y: 45, 
-        			color: '#474295'
-        		},
-        		{
-        			name: 'GoT Others', 
-        			y: 15, 
-        			color: '#877D4A' 
-        		},
-        		{
-        			name: 'GoT PTTEP', 
-        			y: 10, 
-        			color: '#0FB2EF'
-        		},
-        		{
-        			name: 'Myanmar Import', 
-        			y: 10, 
-        			color: '#303D6F'
-        		},
-        		{
-        			name: 'LNG (By 3rd Party)', 
-        			y: 20, 
-        			color: '#A1E5FF'
-        		}
-        		],
-        		innerSize: 68,
-        		showInLegend:true,
-        		dataLabels: {
-        			enabled: false
-        		}
-        	}]
-        });
-    });
+	senerio1();
+	senerio2();
+	senerio3();
+     
+});
 /*--END DOCUMENT READY FUNCTION--*/
 
